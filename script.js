@@ -4,9 +4,10 @@ const data = [
     { name: "Carol", price: 70, occupation: "programmer" }
 ];
 
-function renderData()
+function renderData() {
+    const tableContainer = document.querySelector('#tableContainer');
 
-let table = `<table>
+    let tableHTML = `<table>
         <thead>
             <tr>
                 <th>Name</th>
@@ -15,3 +16,16 @@ let table = `<table>
             </tr>
         </thead>
         <tbody>`;
+        
+    data.forEach(person => {
+        tableHTML += `<tr>
+            <td>${person.name}</td>
+            <td>${person.occupation}</td>
+            <td>$${person.price}</td>
+        </tr>`;
+    });
+    tableHTML += `</tbody></table>`;
+    tableContainer.innerHTML = tableHTML;
+}
+
+document.addEventListener('DOMContentLoaded', renderData);
